@@ -15,5 +15,3 @@ jobs:
         run: |
           docker build -t hello-nginx .
           docker run -p 8080:80 hello-nginx
-        ports:
-          - 8080:8080
