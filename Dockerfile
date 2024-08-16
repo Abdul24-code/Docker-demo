@@ -1,17 +1,11 @@
-# Use the official Nginx image from the Docker Hub
-FROM nginx:alpine
+# Use the official Python image from the Docker Hub
+FROM python:3.11-slim
 
-# Remove the default Nginx configuration file
-RUN rm /etc/nginx/conf.d/default.conf
+# Set the working directory in the container
+WORKDIR /app
 
-# Add a custom Nginx configuration file
-COPY nginx.conf /etc/nginx/nginx.conf
+# Copy the hello_world.py file into the container
+COPY hello_world.py .
 
-# Copy the HTML file to the Nginx web root
-COPY index.html /usr/share/nginx/html/index.html
-
-# Expose port 80
-EXPOSE 80
-
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Run the hello_world.py script
+CMD ["python", "hello_world.py"]
